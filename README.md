@@ -1,4 +1,4 @@
-SpoinkSpaceInvaders
-===================
+Spoink Tetris
+============
 
-My Space Invaders Clone made in C++ and SDL 2.0
+My tetris made in C++ with SDL 2.0

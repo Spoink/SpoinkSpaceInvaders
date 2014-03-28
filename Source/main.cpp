@@ -1,11 +1,11 @@
-#include "SDL_Game.h"
+#include "Base.h"
 
 int main(int argc, char** argv)
 {
-	SDL_Game game;
-	game.Initialize();
-	game.Update();
-	game.Shutdown();
+    Base base;
+    base.Initialize();
+    base.Update();
+    base.Shutdown();
 
-	return 0;
+    return 0;
 }
