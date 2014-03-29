@@ -1,12 +1,19 @@
-﻿Build started 2014-03-29 00:07:03.
+﻿Build started 2014-03-29 14:15:49.
      1>Project "D:\Ted\GitHub\SpoinkInvaders\SpoinkInvaders.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Programs\VisualStudios\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Player.cpp
-         Player.cpp
-     1>d:\ted\github\spoinkinvaders\source\player.cpp(33): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>d:\ted\github\spoinkinvaders\source\player.cpp(39): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         D:\Programs\VisualStudios\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Enemy.cpp
+         Enemy.cpp
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(9): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(10): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(11): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(25): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(38): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(39): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\ted\github\spoinkinvaders\source\enemy.cpp(40): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
        Link:
          D:\Programs\VisualStudios\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Ted\GitHub\SpoinkInvaders\Debug\SpoinkInvaders.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Ted\GitHub\SpoinkInvaders\Debug\SpoinkInvaders.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Ted\GitHub\SpoinkInvaders\Debug\SpoinkInvaders.lib" /MACHINE:X86 Debug\Base.obj
+         Debug\Enemy.obj
+         Debug\EnemySquad.obj
          Debug\Events.obj
          Debug\FileIO.obj
          Debug\Game.obj
@@ -16,6 +23,7 @@
          Debug\ImageLoader.obj
          Debug\main.obj
          Debug\MainMenu.obj
+         Debug\Missile.obj
          Debug\Player.obj
          Debug\Random.obj
          Debug\Renderer.obj
@@ -30,4 +38,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.90
+Time Elapsed 00:00:00.92

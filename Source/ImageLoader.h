@@ -15,6 +15,7 @@ class ImageLoader
 			MenuSelector,
 			LetterSelector,
 			Player,
+			PlayerMissile,
 			BigShip,
 			EnemyOne,
 			EnemyTwo,

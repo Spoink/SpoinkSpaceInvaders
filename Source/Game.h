@@ -3,6 +3,7 @@
 
 #include "Global.h"
 #include "Player.h"
+#include "EnemySquad.h"
 #include "ScoreManager.h"
 #include "TextManager.h"
 
@@ -18,19 +19,15 @@ class Game
 	private:
 		std::unique_ptr<ScoreManager> m_scoreManager;
 		std::unique_ptr<Player> m_player;
+		std::unique_ptr<EnemySquad> m_squad;
 
 		std::shared_ptr<RenderObject> m_scoreText;
 		std::shared_ptr<RenderObject> m_scoreLabel;
-		std::shared_ptr<RenderObject> m_playerHighscoreLabel;
-		std::shared_ptr<RenderObject> m_highscoreLabel;
-		std::vector<std::shared_ptr<RenderObject>> m_highscoreObjs;
 
 		int m_oldScore;
 		bool m_gotoMenu;
 
 		void UpdateScore();
-		void GenerateHighscoreList();
-		void UpdateHighscore();
 };
 
 #endif GAME_H

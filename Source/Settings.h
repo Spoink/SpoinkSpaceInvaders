@@ -7,6 +7,7 @@ class Settings
 		static const bool IsMusicOn;
 		static const bool IsSoundOn;
 		static const int PlayfieldWidth;
+		static const int PlayfieldHeight;
 };
 
 #endif SETTINGS_H

@@ -22,7 +22,11 @@ void Renderer::Update()
 	SDL_FillRect(m_mainSurface, NULL, m_backgroundColor);
 
 	for(int i = 0; i < renderQueue.size(); i++)
-	{ SDL_BlitSurface(renderQueue[i]->GetImage(), NULL, m_mainSurface, renderQueue[i]->GetRect().get()); }
+	{
+		if(!renderQueue[i]->IsVisible())
+		{ continue; }
+		SDL_BlitSurface(renderQueue[i]->GetImage(), NULL, m_mainSurface, renderQueue[i]->GetRect().get()); 
+	}
 
 	SDL_UpdateWindowSurface(m_window);
 }

@@ -14,6 +14,7 @@ void ImageLoader::Initialize()
 	m_images.push_back(LoadImage("Assets/Images/MenuSelector.png"));
 	m_images.push_back(LoadImage("Assets/Images/LetterSelector.png"));
 	m_images.push_back(LoadImage("Assets/Images/Player.png"));
+	m_images.push_back(LoadImage("Assets/Images/PlayerMissile.png"));
 	m_images.push_back(LoadImage("Assets/Images/BigShip.png"));
 	m_images.push_back(LoadImage("Assets/Images/Enemy_0.png"));
 	m_images.push_back(LoadImage("Assets/Images/Enemy_1.png"));

@@ -70,6 +70,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Base.cpp" />
+    <ClCompile Include="Source\Enemy.cpp" />
+    <ClCompile Include="Source\EnemySquad.cpp" />
     <ClCompile Include="Source\Events.cpp" />
     <ClCompile Include="Source\FileIO.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -79,6 +81,7 @@
     <ClCompile Include="Source\ImageLoader.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\MainMenu.cpp" />
+    <ClCompile Include="Source\Missile.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Random.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
@@ -92,6 +95,8 @@
   <ItemGroup>
     <ClInclude Include="Global.h" />
     <ClInclude Include="Source\Base.h" />
+    <ClInclude Include="Source\Enemy.h" />
+    <ClInclude Include="Source\EnemySquad.h" />
     <ClInclude Include="Source\Events.h" />
     <ClInclude Include="Source\FileIO.h" />
     <ClInclude Include="Source\Game.h" />
@@ -101,6 +106,7 @@
     <ClInclude Include="Source\ImageLoader.h" />
     <ClInclude Include="Source\KeyCode.h" />
     <ClInclude Include="Source\MainMenu.h" />
+    <ClInclude Include="Source\Missile.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Random.h" />
     <ClInclude Include="Source\RefCount.h" />
