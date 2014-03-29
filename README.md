@@ -1,4 +1,5 @@
-Spoink Tetris
+SpoinkInvaders
 ============
 
-My tetris made in C++ with SDL 2.0
+My space invaders made in C++ with SDL 2.0
+Status: Under construction
