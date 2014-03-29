@@ -8,17 +8,22 @@ Missile::Missile(std::shared_ptr<RenderObject> graphics)
 	m_graphics = graphics; 
 	m_isActive = false;
 
-	m_xpos = m_graphics->GetRect()->x;
-	m_ypos = m_graphics->GetRect()->y;
-	m_height = m_graphics->GetRect()->h;
+	m_xpos = (float)m_graphics->GetRect()->x;
+	m_ypos = (float)m_graphics->GetRect()->y;
+	m_height = (float)m_graphics->GetRect()->h;
 	m_moveDir = 1;
 	m_moveSpeed = 400.0f;
+
+	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Missile", m_graphics->GetRect()));
 
 	m_graphics->ToggleVisibility(false);
 }
 
 Missile::~Missile() 
-{ Gui::RemoveGuiObject(m_graphics); }
+{ 
+	Gui::RemoveGuiObject(m_graphics); 
+	m_collisionObject->SetRemove();
+}
 
 void Missile::Update()
 { 
@@ -27,19 +32,32 @@ void Missile::Update()
 
 	Move();
 	CheckIfOOB();
+
+	if(m_collisionObject->GetCollisionData() != NULL)
+	{ ToggleActive(false); }
 }
 
 void Missile::ToggleActive(bool isActive)
 { 
 	m_isActive = isActive; 
 	m_graphics->ToggleVisibility(m_isActive);
+
+	if(m_isActive)
+	{ CollisionManager::AddObject(m_collisionObject); }
+	else
+	{
+		m_collisionObject->SetRemove();
+		CollisionManager::CleanupList();
+		m_collisionObject->ClearCollisionData();
+		SetPosition(-100, -100);
+	}
 }
 
 void Missile::SetPosition(int xpos, int ypos)
 { 
-	m_xpos = xpos;
-	m_ypos = ypos;
-	m_graphics->SetPosition(m_xpos, m_ypos); 
+	m_xpos = (float)xpos;
+	m_ypos = (float)ypos;
+	m_graphics->SetPosition((int)m_xpos, (int)m_ypos); 
 }
 
 void Missile::SetMoveDirection(int direction)
@@ -48,7 +66,7 @@ void Missile::SetMoveDirection(int direction)
 void Missile::Move()
 {
 	m_ypos += (m_moveSpeed * Time::GetDeltaTime()) * m_moveDir; 
-	m_graphics->SetPosition(m_xpos, m_ypos);
+	m_graphics->SetPosition((int)m_xpos, (int)m_ypos);
 }
 
 void Missile::CheckIfOOB()

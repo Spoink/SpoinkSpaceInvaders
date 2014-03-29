@@ -16,6 +16,7 @@ private:
 	std::vector<std::unique_ptr<Enemy>> m_listOfEnemies;
 
 	void SpawnEnemies();
+	void CleanupList();
 };
 
 #endif ENEMYSQUAD_H

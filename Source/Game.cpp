@@ -15,6 +15,7 @@ void Game::Initialize()
 
 	m_player = std::unique_ptr<Player>(new Player());
 	m_squad = std::unique_ptr<EnemySquad>(new EnemySquad());
+	m_collisionManager = std::unique_ptr<CollisionManager>(new CollisionManager());
 
 	m_scoreText = std::shared_ptr<RenderObject>(Gui::Label("Score: ", 40, 40, Gui::Color::White));
 	m_scoreLabel = std::shared_ptr<RenderObject>(Gui::Label("0", 120, 40, Gui::Color::White));
@@ -38,6 +39,7 @@ void Game::Update()
 
 	m_player->Update();
 	m_squad->Update();
+	m_collisionManager->Update();
 	UpdateScore();
 }
 
@@ -52,6 +54,7 @@ void Game::Shutdown()
 	SoundManager::Instance->StopMusic();
 	m_player.reset();
 	m_squad.reset();
+	m_collisionManager.reset();
 }
 
 bool Game::GotoMenu()

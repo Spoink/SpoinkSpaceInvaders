@@ -10,6 +10,8 @@ EnemySquad::~EnemySquad() {}
 
 void EnemySquad::Update()
 {
+	CleanupList();
+
 	bool hasHitWall = false;
 	for(unsigned int i = 0; i < m_listOfEnemies.size(); i++)
 	{ 
@@ -48,4 +50,13 @@ void EnemySquad::SpawnEnemies()
 
 		m_listOfEnemies.push_back(std::unique_ptr<Enemy>(new Enemy(graphics)));
 	}	
+}
+
+void EnemySquad::CleanupList()
+{
+	for(int i = m_listOfEnemies.size() - 1; i > -1; i--)
+	{ 
+		if(!m_listOfEnemies[i]->IsAlive())
+		{ m_listOfEnemies.erase(m_listOfEnemies.begin() + i); }
+	}
 }

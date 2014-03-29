@@ -3,6 +3,7 @@
 
 #include "Global.h"
 #include "RenderObject.h"
+#include "CollisionManager.h"
 
 class Missile
 {
@@ -18,6 +19,7 @@ public:
 
 private:
 	std::shared_ptr<RenderObject> m_graphics;
+	std::shared_ptr<CollisionObject> m_collisionObject;
 	bool m_isActive;
 	float m_moveSpeed;
 	float m_xpos;

@@ -70,6 +70,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Base.cpp" />
+    <ClCompile Include="Source\CollisionManager.cpp" />
+    <ClCompile Include="Source\CollisionObject.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemySquad.cpp" />
     <ClCompile Include="Source\Events.cpp" />
@@ -95,6 +97,8 @@
   <ItemGroup>
     <ClInclude Include="Global.h" />
     <ClInclude Include="Source\Base.h" />
+    <ClInclude Include="Source\CollisionManager.h" />
+    <ClInclude Include="Source\CollisionObject.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemySquad.h" />
     <ClInclude Include="Source\Events.h" />
