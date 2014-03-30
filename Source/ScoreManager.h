@@ -11,6 +11,7 @@ class ScoreManager
 		void Initialize();
 		void Shutdown();
 
+		void AddScore(int score);
 		int GetScore();
 		bool IsGameOver();
 		void Cleanup();

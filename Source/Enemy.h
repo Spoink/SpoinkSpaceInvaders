@@ -8,7 +8,15 @@
 class Enemy
 {
 public:
-	Enemy(std::shared_ptr<RenderObject> graphics);
+	enum EnemyType
+	{
+		EnemyType_One = 0,
+		EnemyType_Two,
+		EnemyType_Three,
+		EnemyType_Four
+	};
+	
+	Enemy(EnemyType enemyType, std::shared_ptr<RenderObject> graphics);
 	~Enemy();
 
 	void Update();
@@ -28,6 +36,7 @@ private:
 	float m_moveSpeed;
 	int m_moveDir;
 	bool m_isAlive;
+	EnemyType m_enemyType;
 
 	void Destroy();
 };

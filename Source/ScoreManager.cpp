@@ -14,6 +14,9 @@ void ScoreManager::Initialize()
 
 void ScoreManager::Shutdown() {}
 
+void ScoreManager::AddScore(int score)
+{ m_currentScore += score; }
+
 int ScoreManager::GetScore()
 { return m_currentScore; }
 

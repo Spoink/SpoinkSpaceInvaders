@@ -22,7 +22,7 @@ Missile::Missile(std::shared_ptr<RenderObject> graphics)
 Missile::~Missile() 
 { 
 	Gui::RemoveGuiObject(m_graphics); 
-	m_collisionObject->SetRemove();
+	m_collisionObject->ToggleRemove(true);
 }
 
 void Missile::Update()
@@ -43,10 +43,13 @@ void Missile::ToggleActive(bool isActive)
 	m_graphics->ToggleVisibility(m_isActive);
 
 	if(m_isActive)
-	{ CollisionManager::AddObject(m_collisionObject); }
+	{
+		m_collisionObject->ToggleRemove(false);
+		CollisionManager::AddObject(m_collisionObject); 
+	}
 	else
 	{
-		m_collisionObject->SetRemove();
+		m_collisionObject->ToggleRemove(true);
 		CollisionManager::CleanupList();
 		m_collisionObject->ClearCollisionData();
 		SetPosition(-100, -100);
@@ -72,10 +75,7 @@ void Missile::Move()
 void Missile::CheckIfOOB()
 {
 	if(m_ypos < -m_height || m_ypos > (Settings::PlayfieldHeight + m_height))
-	{ 
-		m_isActive = false; 
-		m_graphics->ToggleVisibility(false);
-	}
+	{ ToggleActive(false); }
 }
 
 bool Missile::IsActive()

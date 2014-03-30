@@ -39,16 +39,30 @@ void EnemySquad::SpawnEnemies()
 		int xpos = ((i % 11) * 55) + xOffset;
 		int ypos = ((i / 11) * 55) + yOffset;
 		std::shared_ptr<RenderObject> graphics;
-		if(i < 11)
-		{ graphics = Gui::Sprite(ImageLoader::EnemyOne, xpos, ypos); }
-		else if(i < 33)
-		{ graphics = Gui::Sprite(ImageLoader::EnemyTwo, xpos, ypos); }
-		else if(i < 44)
-		{ graphics = Gui::Sprite(ImageLoader::EnemyThree, xpos, ypos); }
-		else 
-		{ graphics = Gui::Sprite(ImageLoader::EnemyFour, xpos, ypos); }
+		Enemy::EnemyType enemyType = Enemy::EnemyType::EnemyType_One;
 
-		m_listOfEnemies.push_back(std::unique_ptr<Enemy>(new Enemy(graphics)));
+		if(i < 11)
+		{ 
+			graphics = Gui::Sprite(ImageLoader::EnemyOne, xpos, ypos); 
+			enemyType = Enemy::EnemyType::EnemyType_One;
+		}
+		else if(i < 33)
+		{ 
+			graphics = Gui::Sprite(ImageLoader::EnemyTwo, xpos, ypos); 
+			enemyType = Enemy::EnemyType::EnemyType_Two;
+		}
+		else if(i < 44)
+		{ 
+			graphics = Gui::Sprite(ImageLoader::EnemyThree, xpos, ypos); 
+			enemyType = Enemy::EnemyType::EnemyType_Three;
+		}
+		else 
+		{ 
+			graphics = Gui::Sprite(ImageLoader::EnemyFour, xpos, ypos); 
+			enemyType = Enemy::EnemyType::EnemyType_Four;
+		}
+
+		m_listOfEnemies.push_back(std::unique_ptr<Enemy>(new Enemy(enemyType, graphics)));
 	}	
 }
 

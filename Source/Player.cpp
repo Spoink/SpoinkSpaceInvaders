@@ -14,7 +14,7 @@ Player::Player()
 
 	m_speed = 340.0f;
 	m_lastFire = 0.0f;
-	m_fireRate = 0.3f;
+	m_fireRate = 0.1f;
 
 	for(unsigned int i = 0; i < 10; i++)
 	{
@@ -50,7 +50,7 @@ void Player::MoveToLeft()
 	{ return; }
 
 	m_xpos = newX;
-	m_graphics->SetPosition(m_xpos, m_ypos);
+	m_graphics->SetPosition((int)m_xpos, (int)m_ypos);
 }
 
 void Player::MoveToRight()
@@ -60,7 +60,7 @@ void Player::MoveToRight()
 	{ return; }
 
 	m_xpos = newX;
-	m_graphics->SetPosition(m_xpos, m_ypos);	
+	m_graphics->SetPosition((int)m_xpos, (int)m_ypos);	
 }
 
 void Player::FireMissile()
@@ -73,7 +73,7 @@ void Player::FireMissile()
 		if(m_listOfMissiles[i]->IsActive())
 		{ continue; }
 
-		m_listOfMissiles[i]->SetPosition(m_xpos + 22, m_ypos);
+		m_listOfMissiles[i]->SetPosition((int)m_xpos + 22, (int)m_ypos);
 		m_listOfMissiles[i]->SetMoveDirection(-1);
 		m_listOfMissiles[i]->ToggleActive(true);
 		break;

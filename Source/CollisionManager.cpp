@@ -37,10 +37,16 @@ void CollisionManager::CheckForCollisions()
 		{
 			if(collisionObjects[i]->GetCollisionData() != NULL)
 			{ break; }
+			if(collisionObjects[m]->GetCollisionData() != NULL)
+			{ break; }
 			if(i == m)
 			{ continue; }
 
-			collisionObjects[i]->CheckCollision(collisionObjects[m]);
+			if(!collisionObjects[i]->CheckCollision(collisionObjects[m]->GetRect()))
+			{ continue; }
+			
+			collisionObjects[i]->SetCollisionData(collisionObjects[m]);
+			collisionObjects[m]->SetCollisionData(collisionObjects[i]);
 		}
 	}
 }

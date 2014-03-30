@@ -12,10 +12,11 @@ public:
 	~CollisionObject();
 
 	std::string Name();
-	void SetRemove();
+	void ToggleRemove(bool shouldRemove);
 	bool ShouldRemove();
 	std::shared_ptr<SDL_Rect> GetRect();
-	void CheckCollision(std::shared_ptr<CollisionObject> otherCollider);
+	bool CheckCollision(std::shared_ptr<SDL_Rect> otherCollider);
+	void SetCollisionData(std::shared_ptr<CollisionObject>collisionData);
 	std::shared_ptr<CollisionData> GetCollisionData();
 	void ClearCollisionData();
 
