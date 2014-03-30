@@ -8,6 +8,7 @@ class Settings
 		static const bool IsSoundOn;
 		static const int PlayfieldWidth;
 		static const int PlayfieldHeight;
+		static const int GameOverHeight;
 };
 
 #endif SETTINGS_H

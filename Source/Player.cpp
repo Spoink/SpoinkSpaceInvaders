@@ -3,6 +3,7 @@
 #include "Events.h"
 #include "Time.h"
 #include "Settings.h"
+#include "ScoreManager.h"
 
 Player::Player() 
 {
@@ -80,4 +81,5 @@ void Player::FireMissile()
 	}
 
 	m_lastFire = Time::GetTime();
+	ScoreManager::Instance->AddScore(-5);
 }

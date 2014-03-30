@@ -20,7 +20,10 @@ class ImageLoader
 			EnemyOne,
 			EnemyTwo,
 			EnemyThree,
-			EnemyFour
+			EnemyFour,
+			CoverOne,
+			CoverTwo,
+			CoverThree
 		};
 		
 		static SDL_PixelFormat* PixelFormat;

@@ -13,6 +13,7 @@ class ScoreManager
 
 		void AddScore(int score);
 		int GetScore();
+		void SetGameOver();
 		bool IsGameOver();
 		void Cleanup();
 

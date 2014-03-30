@@ -13,7 +13,8 @@ public:
 		EnemyType_One = 0,
 		EnemyType_Two,
 		EnemyType_Three,
-		EnemyType_Four
+		EnemyType_Four,
+		EnemyType_Special
 	};
 	
 	Enemy(EnemyType enemyType, std::shared_ptr<RenderObject> graphics);
@@ -21,11 +22,16 @@ public:
 
 	void Update();
 	bool HasHitBounderies();
+	bool HasReachedPlayer();
 	
 	void SetPosition(int xpos, int ypos);
 	void SetMoveDir(int moveDir);
 	int GetMoveDir();
+	float GetX();
+	float GetY();
+	bool IsHit();
 	bool IsAlive();
+	void Destroy();
 
 private:
 	std::shared_ptr<RenderObject> m_graphics;
@@ -37,8 +43,6 @@ private:
 	int m_moveDir;
 	bool m_isAlive;
 	EnemyType m_enemyType;
-
-	void Destroy();
 };
 
 #endif ENEMY_H

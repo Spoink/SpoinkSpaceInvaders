@@ -35,7 +35,7 @@ void Enemy::Update()
 	m_xpos += (m_moveSpeed * Time::GetDeltaTime()) * m_moveDir; 
 	m_graphics->SetPosition((int)m_xpos, (int)m_ypos);
 
-	if(m_collisionObject->GetCollisionData() != NULL)
+	if(IsHit())
 	{ Destroy(); }
 }
 
@@ -55,6 +55,9 @@ bool Enemy::HasHitBounderies()
 	return false;
 }
 
+bool Enemy::HasReachedPlayer()
+{ return m_ypos >= Settings::GameOverHeight; }
+
 void Enemy::SetPosition(int xpos, int ypos)
 { 
 	m_xpos = (float)xpos;
@@ -68,6 +71,15 @@ void Enemy::SetMoveDir(int moveDir)
 int Enemy::GetMoveDir()
 { return m_moveDir; }
 
+float Enemy::GetX()
+{ return m_xpos; }
+
+float Enemy::GetY()
+{ return m_ypos; }
+
+bool Enemy::IsHit()
+{ return m_collisionObject->GetCollisionData() != NULL; }
+
 bool Enemy::IsAlive()
 { return m_isAlive; }
 
@@ -79,8 +91,10 @@ void Enemy::Destroy()
 	{ ScoreManager::Instance->AddScore(20); }
 	else if(m_enemyType == EnemyType::EnemyType_Three)
 	{ ScoreManager::Instance->AddScore(25); }
-	else
+	else if(m_enemyType == EnemyType::EnemyType_Four)
 	{ ScoreManager::Instance->AddScore(30); }
+	else
+	{ ScoreManager::Instance->AddScore(200); }
 
 	m_isAlive = false; 
 }

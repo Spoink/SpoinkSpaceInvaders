@@ -20,6 +20,9 @@ void ImageLoader::Initialize()
 	m_images.push_back(LoadImage("Assets/Images/Enemy_1.png"));
 	m_images.push_back(LoadImage("Assets/Images/Enemy_2.png"));
 	m_images.push_back(LoadImage("Assets/Images/Enemy_3.png"));
+	m_images.push_back(LoadImage("Assets/Images/Cover_0.png"));
+	m_images.push_back(LoadImage("Assets/Images/Cover_1.png"));
+	m_images.push_back(LoadImage("Assets/Images/Cover_2.png"));
 }
 
 void ImageLoader::Shutdown()

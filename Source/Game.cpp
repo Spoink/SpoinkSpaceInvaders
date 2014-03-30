@@ -16,6 +16,10 @@ void Game::Initialize()
 	m_player = std::unique_ptr<Player>(new Player());
 	m_squad = std::unique_ptr<EnemySquad>(new EnemySquad());
 	m_collisionManager = std::unique_ptr<CollisionManager>(new CollisionManager());
+	m_specialEnemy = std::unique_ptr<SpecialEnemy>(new SpecialEnemy());
+
+	for(int i = 0; i < 4; i++)
+	{ m_listOfCovers.push_back(std::unique_ptr<Cover>(new Cover(64 + (i*200), 470))); }
 
 	m_scoreText = std::shared_ptr<RenderObject>(Gui::Label("Score: ", 40, 40, Gui::Color::White));
 	m_scoreLabel = std::shared_ptr<RenderObject>(Gui::Label("0", 120, 40, Gui::Color::White));
@@ -39,6 +43,11 @@ void Game::Update()
 
 	m_player->Update();
 	m_squad->Update();
+	m_specialEnemy->Update();
+
+	for(unsigned int i = 0; i < m_listOfCovers.size(); i++)
+	{ m_listOfCovers[i]->Update(); }
+
 	m_collisionManager->Update();
 	UpdateScore();
 }
@@ -55,6 +64,8 @@ void Game::Shutdown()
 	m_player.reset();
 	m_squad.reset();
 	m_collisionManager.reset();
+	m_specialEnemy.reset();
+	m_listOfCovers.clear();
 }
 
 bool Game::GotoMenu()

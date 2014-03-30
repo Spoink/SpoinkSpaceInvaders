@@ -8,7 +8,7 @@ std::vector<std::shared_ptr<RenderObject>> Renderer::renderQueue;
 
 void Renderer::Initialize()
 {
-    m_window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
+    m_window = SDL_CreateWindow("Spoink Invaders", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
 	m_mainSurface = SDL_GetWindowSurface(m_window);
 		
 	ImageLoader::PixelFormat = m_mainSurface->format;

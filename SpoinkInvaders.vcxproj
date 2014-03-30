@@ -72,6 +72,7 @@
     <ClCompile Include="Source\Base.cpp" />
     <ClCompile Include="Source\CollisionManager.cpp" />
     <ClCompile Include="Source\CollisionObject.cpp" />
+    <ClCompile Include="Source\Cover.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemySquad.cpp" />
     <ClCompile Include="Source\Events.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="Source\ScoreManager.cpp" />
     <ClCompile Include="Source\Settings.cpp" />
     <ClCompile Include="Source\SoundManager.cpp" />
+    <ClCompile Include="Source\SpecialEnemy.cpp" />
     <ClCompile Include="Source\TextManager.cpp" />
     <ClCompile Include="Source\Time.cpp" />
   </ItemGroup>
@@ -99,6 +101,7 @@
     <ClInclude Include="Source\Base.h" />
     <ClInclude Include="Source\CollisionManager.h" />
     <ClInclude Include="Source\CollisionObject.h" />
+    <ClInclude Include="Source\Cover.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemySquad.h" />
     <ClInclude Include="Source\Events.h" />
@@ -119,6 +122,7 @@
     <ClInclude Include="Source\ScoreManager.h" />
     <ClInclude Include="Source\Settings.h" />
     <ClInclude Include="Source\SoundManager.h" />
+    <ClInclude Include="Source\SpecialEnemy.h" />
     <ClInclude Include="Source\TextManager.h" />
     <ClInclude Include="Source\Time.h" />
   </ItemGroup>

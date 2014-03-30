@@ -5,6 +5,8 @@
 #include "Player.h"
 #include "EnemySquad.h"
 #include "CollisionManager.h"
+#include "SpecialEnemy.h"
+#include "Cover.h"
 #include "ScoreManager.h"
 #include "TextManager.h"
 
@@ -22,6 +24,8 @@ class Game
 		std::unique_ptr<Player> m_player;
 		std::unique_ptr<EnemySquad> m_squad;
 		std::unique_ptr<CollisionManager> m_collisionManager;
+		std::unique_ptr<SpecialEnemy> m_specialEnemy;
+		std::vector<std::unique_ptr<Cover>> m_listOfCovers;
 
 		std::shared_ptr<RenderObject> m_scoreText;
 		std::shared_ptr<RenderObject> m_scoreLabel;

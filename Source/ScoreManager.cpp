@@ -15,10 +15,17 @@ void ScoreManager::Initialize()
 void ScoreManager::Shutdown() {}
 
 void ScoreManager::AddScore(int score)
-{ m_currentScore += score; }
+{ 
+	m_currentScore += score; 
+	if(m_currentScore < 0)
+	{ m_currentScore = 0; }
+}
 
 int ScoreManager::GetScore()
 { return m_currentScore; }
+
+void ScoreManager::SetGameOver()
+{ m_gameOver = true; }
 
 bool ScoreManager::IsGameOver()
 { return m_gameOver; }

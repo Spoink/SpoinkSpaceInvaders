@@ -1,5 +1,6 @@
 #include "EnemySquad.h"
 #include "Gui.h"
+#include "ScoreManager.h"
 
 EnemySquad::EnemySquad() 
 {
@@ -13,19 +14,27 @@ void EnemySquad::Update()
 	CleanupList();
 
 	bool hasHitWall = false;
+	bool hasReachedPlayer = false;
 	for(unsigned int i = 0; i < m_listOfEnemies.size(); i++)
 	{ 
 		m_listOfEnemies[i]->Update();
 		if(m_listOfEnemies[i]->HasHitBounderies())
 		{ hasHitWall = true; }
+		else if(m_listOfEnemies[i]->HasReachedPlayer())
+		{ hasReachedPlayer = true; }
 	}
 
 	if(hasHitWall)
 	{
 		int moveDir = m_listOfEnemies[0]->GetMoveDir() == 1 ? -1 : 1;
 		for(unsigned int i = 0; i < m_listOfEnemies.size(); i++)
-		{ m_listOfEnemies[i]->SetMoveDir(moveDir); }	
+		{ 
+			m_listOfEnemies[i]->SetMoveDir(moveDir); 
+			m_listOfEnemies[i]->SetPosition((int)m_listOfEnemies[i]->GetX(), (int)m_listOfEnemies[i]->GetY() + 5);
+		}
 	}
+	else if(hasReachedPlayer)
+	{ ScoreManager::Instance->SetGameOver(); }
 }
 
 void EnemySquad::SpawnEnemies()
@@ -73,4 +82,7 @@ void EnemySquad::CleanupList()
 		if(!m_listOfEnemies[i]->IsAlive())
 		{ m_listOfEnemies.erase(m_listOfEnemies.begin() + i); }
 	}
+
+	if(m_listOfEnemies.size() == 0)
+	{ ScoreManager::Instance->SetGameOver(); }
 }
