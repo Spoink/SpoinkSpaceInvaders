@@ -3,7 +3,7 @@
 #include "Settings.h"
 #include "Gui.h"
 
-Missile::Missile(std::shared_ptr<RenderObject> graphics) 
+Missile::Missile(CollisionObject::CollisionLayer layer, std::shared_ptr<RenderObject> graphics) 
 { 
 	m_graphics = graphics; 
 	m_isActive = false;
@@ -14,7 +14,7 @@ Missile::Missile(std::shared_ptr<RenderObject> graphics)
 	m_moveDir = 1;
 	m_moveSpeed = 400.0f;
 
-	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Missile", m_graphics->GetRect()));
+	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Missile", layer, m_graphics->GetRect()));
 
 	m_graphics->ToggleVisibility(false);
 }

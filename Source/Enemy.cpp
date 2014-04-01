@@ -12,8 +12,14 @@ Enemy::Enemy(EnemyType enemyType, std::shared_ptr<RenderObject> graphics)
 	m_ypos = (float)m_graphics->GetRect()->y;
 	m_width = (float)m_graphics->GetRect()->w;
 
-	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Enemy", m_graphics->GetRect()));
+	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Enemy", CollisionObject::CollisionLayer::Enemy, m_graphics->GetRect()));
 	CollisionManager::AddObject(m_collisionObject);
+
+	for(unsigned int i = 0; i < 3; i++)
+	{
+		std::shared_ptr<RenderObject> graphics = Gui::Sprite(ImageLoader::PlayerMissile, 0, 0);
+		m_listOfMissiles.push_back(std::unique_ptr<Missile>(new Missile(CollisionObject::CollisionLayer::Enemy, graphics))); 
+	}
 
 	m_moveSpeed = 100.0f;
 	m_moveDir = 1;
@@ -34,6 +40,9 @@ void Enemy::Update()
 
 	m_xpos += (m_moveSpeed * Time::GetDeltaTime()) * m_moveDir; 
 	m_graphics->SetPosition((int)m_xpos, (int)m_ypos);
+
+	for(unsigned int i = 0; i < m_listOfMissiles.size(); i++)
+	{ m_listOfMissiles[i]->Update(); }
 
 	if(IsHit())
 	{ Destroy(); }
@@ -97,4 +106,18 @@ void Enemy::Destroy()
 	{ ScoreManager::Instance->AddScore(200); }
 
 	m_isAlive = false; 
+}
+
+void Enemy::FireMissile()
+{ 
+	for(unsigned int i = 0; i < m_listOfMissiles.size(); i++)
+	{
+		if(m_listOfMissiles[i]->IsActive())
+		{ continue; }
+
+		m_listOfMissiles[i]->SetPosition((int)m_xpos + 22, (int)m_ypos);
+		m_listOfMissiles[i]->SetMoveDirection(1);
+		m_listOfMissiles[i]->ToggleActive(true);
+		break;
+	}
 }

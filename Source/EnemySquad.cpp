@@ -1,10 +1,14 @@
 #include "EnemySquad.h"
 #include "Gui.h"
 #include "ScoreManager.h"
+#include "Time.h"
+#include "Random.h"
 
 EnemySquad::EnemySquad() 
 {
 	SpawnEnemies();
+
+	m_nextMissile = Time::GetTime() + Random::Range(1, 3);
 }
 
 EnemySquad::~EnemySquad() {}
@@ -12,6 +16,7 @@ EnemySquad::~EnemySquad() {}
 void EnemySquad::Update()
 {
 	CleanupList();
+	MissileAction();
 
 	bool hasHitWall = false;
 	bool hasReachedPlayer = false;
@@ -85,4 +90,14 @@ void EnemySquad::CleanupList()
 
 	if(m_listOfEnemies.size() == 0)
 	{ ScoreManager::Instance->SetGameOver(); }
+}
+
+void EnemySquad::MissileAction()
+{
+	if(Time::GetTime() < m_nextMissile)
+	{ return; }
+
+	int randomId = Random::Range(0, m_listOfEnemies.size());
+	m_listOfEnemies[randomId]->FireMissile();
+	m_nextMissile = Time::GetTime() + Random::Range(1, 3);
 }

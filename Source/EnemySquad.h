@@ -14,9 +14,11 @@ public:
 
 private:
 	std::vector<std::unique_ptr<Enemy>> m_listOfEnemies;
+	float m_nextMissile;
 
 	void SpawnEnemies();
 	void CleanupList();
+	void MissileAction();
 };
 
 #endif ENEMYSQUAD_H

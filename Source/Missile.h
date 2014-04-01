@@ -8,7 +8,7 @@
 class Missile
 {
 public:
-	Missile(std::shared_ptr<RenderObject> graphics);
+	Missile(CollisionObject::CollisionLayer layer, std::shared_ptr<RenderObject> graphics);
 	~Missile();
 
 	void Update();

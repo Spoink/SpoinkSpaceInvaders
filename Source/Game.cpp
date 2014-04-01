@@ -24,7 +24,12 @@ void Game::Initialize()
 	m_scoreText = std::shared_ptr<RenderObject>(Gui::Label("Score: ", 40, 40, Gui::Color::White));
 	m_scoreLabel = std::shared_ptr<RenderObject>(Gui::Label("0", 120, 40, Gui::Color::White));
 
+	m_livesLabel = std::shared_ptr<RenderObject>(Gui::Label("Lives: ", 550, 40, Gui::Color::White));
+	m_livesSprite = std::shared_ptr<RenderObject>(Gui::Sprite(ImageLoader::Player, 620, 30));
+	m_livesNumberLabel = std::shared_ptr<RenderObject>(Gui::Label("x3", 680, 40, Gui::Color::White));
+
 	m_oldScore = 0;
+	m_oldLives = m_player->GetLives();
 	m_gotoMenu = false;
 
 	SoundManager::Instance->PlayMusic(SoundManager::Music::MainLoop, true);
@@ -50,12 +55,16 @@ void Game::Update()
 
 	m_collisionManager->Update();
 	UpdateScore();
+	UpdateLives();
 }
 
 void Game::Shutdown()
 {
 	Gui::RemoveGuiObject(m_scoreLabel);
 	Gui::RemoveGuiObject(m_scoreText);
+	Gui::RemoveGuiObject(m_livesLabel);
+	Gui::RemoveGuiObject(m_livesSprite);
+	Gui::RemoveGuiObject(m_livesNumberLabel);
 
 	m_scoreManager->Cleanup();
 	m_scoreManager->Shutdown(); 
@@ -83,6 +92,16 @@ void Game::UpdateScore()
 	Gui::RemoveGuiObject(m_scoreLabel);
 	m_oldScore = m_scoreManager->GetScore();
 	m_scoreLabel = Gui::Label("" + std::to_string(m_oldScore), 120, 40, Gui::Color::White);
+}
+
+void Game::UpdateLives()
+{
+	if(m_oldLives == m_player->GetLives())
+	{ return; }
+
+	Gui::RemoveGuiObject(m_livesNumberLabel);
+	m_livesNumberLabel = std::shared_ptr<RenderObject>(Gui::Label("x" + std::to_string(m_player->GetLives()), 680, 40, Gui::Color::White));
+	m_oldLives = m_player->GetLives();
 }
 
 #pragma endregion

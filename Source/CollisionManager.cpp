@@ -41,6 +41,10 @@ void CollisionManager::CheckForCollisions()
 			{ break; }
 			if(i == m)
 			{ continue; }
+			if(collisionObjects[m]->GetLayer() == CollisionObject::CollisionLayer::Enemy && collisionObjects[i]->GetLayer() == CollisionObject::CollisionLayer::Enemy)
+			{ continue; }
+			if(collisionObjects[m]->GetLayer() == CollisionObject::CollisionLayer::Player && collisionObjects[i]->GetLayer() == CollisionObject::CollisionLayer::Player)
+			{ continue; }
 
 			if(!collisionObjects[i]->CheckCollision(collisionObjects[m]->GetRect()))
 			{ continue; }

@@ -29,11 +29,16 @@ class Game
 
 		std::shared_ptr<RenderObject> m_scoreText;
 		std::shared_ptr<RenderObject> m_scoreLabel;
+		std::shared_ptr<RenderObject> m_livesLabel;
+		std::shared_ptr<RenderObject> m_livesSprite;
+		std::shared_ptr<RenderObject> m_livesNumberLabel;
 
 		int m_oldScore;
+		int m_oldLives;
 		bool m_gotoMenu;
 
 		void UpdateScore();
+		void UpdateLives();
 };
 
 #endif GAME_H

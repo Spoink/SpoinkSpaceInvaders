@@ -1,8 +1,9 @@
 #include "CollisionObject.h"
 
-CollisionObject::CollisionObject(std::string name, std::shared_ptr<SDL_Rect> collisionBox) 
+CollisionObject::CollisionObject(std::string name, CollisionObject::CollisionLayer layer, std::shared_ptr<SDL_Rect> collisionBox) 
 {
 	m_name = name;
+	m_layer = layer;
 	m_collisionBox = collisionBox;
 	m_removeObject = false;
 	m_collisionData = NULL;
@@ -22,6 +23,18 @@ bool CollisionObject::ShouldRemove()
 std::shared_ptr<SDL_Rect> CollisionObject::GetRect()
 { return m_collisionBox; }
 
+std::shared_ptr<CollisionData> CollisionObject::GetCollisionData()
+{ return m_collisionData; }
+
+CollisionObject::CollisionLayer CollisionObject::GetLayer()
+{ return m_layer; }
+
+void CollisionObject::SetCollisionData(std::shared_ptr<CollisionObject> otherCollider)
+{ 
+	m_collisionData = std::shared_ptr<CollisionData>(new CollisionData());
+	m_collisionData->Collider = otherCollider;
+}
+
 bool CollisionObject::CheckCollision(std::shared_ptr<SDL_Rect> otherBox)
 {
 	if(otherBox->x > (m_collisionBox->x + m_collisionBox->w))
@@ -35,15 +48,6 @@ bool CollisionObject::CheckCollision(std::shared_ptr<SDL_Rect> otherBox)
 
 	return true;
 }
-
-void CollisionObject::SetCollisionData(std::shared_ptr<CollisionObject> otherCollider)
-{ 
-	m_collisionData = std::shared_ptr<CollisionData>(new CollisionData());
-	m_collisionData->Collider = otherCollider;
-}
-
-std::shared_ptr<CollisionData> CollisionObject::GetCollisionData()
-{ return m_collisionData; }
 
 void CollisionObject::ClearCollisionData()
 { 

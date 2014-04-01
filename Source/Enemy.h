@@ -4,6 +4,7 @@
 #include "Global.h"
 #include "RenderObject.h"
 #include "CollisionManager.h"
+#include "Missile.h"
 
 class Enemy
 {
@@ -32,10 +33,12 @@ public:
 	bool IsHit();
 	bool IsAlive();
 	void Destroy();
+	void FireMissile();
 
 private:
 	std::shared_ptr<RenderObject> m_graphics;
 	std::shared_ptr<CollisionObject> m_collisionObject;
+	std::vector<std::unique_ptr<Missile>> m_listOfMissiles;
 	float m_xpos;
 	float m_ypos;
 	float m_width;

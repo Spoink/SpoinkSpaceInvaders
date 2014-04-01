@@ -38,6 +38,7 @@ class Highscore
 	private:
 		std::string m_filePath;
 		std::vector<HighscoreData> m_highscore;
+		int m_highscoreCount;
 };
 
 #endif HIGHSCORE_H

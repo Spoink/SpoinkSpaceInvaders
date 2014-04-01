@@ -4,7 +4,8 @@
 
 Highscore* Highscore::Instance = NULL;
 
-Highscore::Highscore() {}
+Highscore::Highscore()
+{ m_highscoreCount = 5; }
 
 Highscore::~Highscore() {}
 
@@ -73,7 +74,7 @@ void Highscore::AddToHighscore(std::string name, int score)
 	if(isInserted)
 	{ return; }
 
-	if(m_highscore.size() < 10)
+	if(m_highscore.size() < m_highscoreCount)
 	{ m_highscore.push_back(newScore); }
 }
 
@@ -92,7 +93,7 @@ int Highscore::GetHighscorePlace(int score)
 	if(place > -1)
 	{ return place; }
 
-	if(m_highscore.size() < 10)
+	if(m_highscore.size() < m_highscoreCount)
 	{ return m_highscore.size() + 1; }
 
 	return -1;

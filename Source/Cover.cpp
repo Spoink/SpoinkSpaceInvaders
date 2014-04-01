@@ -5,7 +5,7 @@
 Cover::Cover(int xpos, int ypos) 
 { 
 	m_graphics = Gui::Sprite(ImageLoader::CoverOne, xpos, ypos); 
-	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Cover", m_graphics->GetRect()));
+	m_collisionObject = std::shared_ptr<CollisionObject>(new CollisionObject("Cover", CollisionObject::CollisionLayer::All, m_graphics->GetRect()));
 	CollisionManager::AddObject(m_collisionObject);
 
 	m_hitPoints = 3;
