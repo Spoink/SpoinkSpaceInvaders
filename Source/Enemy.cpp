@@ -77,6 +77,9 @@ void Enemy::SetPosition(int xpos, int ypos)
 void Enemy::SetMoveDir(int moveDir)
 { m_moveDir = moveDir; }
 
+void Enemy::SetMoveSpeed(int moveSpeed)
+{ m_moveSpeed = moveSpeed; }
+
 int Enemy::GetMoveDir()
 { return m_moveDir; }
 

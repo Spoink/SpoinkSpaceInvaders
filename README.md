@@ -2,6 +2,6 @@ SpoinkInvaders
 ============
 
 My space invaders made in C++ with SDL 2.0 <br \>
-Status: <b>Under construction</b>
+Status: <b>Playable</b>
 <br />
 <img src="./GAME_SCREENSHOT.png" />

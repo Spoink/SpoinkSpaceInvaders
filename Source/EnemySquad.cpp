@@ -44,11 +44,11 @@ void EnemySquad::Update()
 
 void EnemySquad::SpawnEnemies()
 {
-	unsigned int enemyCount = 55;
+	m_startEnemyCount = 55;
 	int xOffset = 100;
 	int yOffset = 100;
 
-	for(unsigned int i = 0; i < enemyCount; i++)
+	for(unsigned int i = 0; i < m_startEnemyCount; i++)
 	{ 
 		int xpos = ((i % 11) * 55) + xOffset;
 		int ypos = ((i / 11) * 55) + yOffset;
@@ -90,6 +90,13 @@ void EnemySquad::CleanupList()
 
 	if(m_listOfEnemies.size() == 0)
 	{ ScoreManager::Instance->SetGameOver(); }
+	else
+	{
+		//int newSpeed = m_listOfEnemies.size() / m_startEnemyCount * 300;
+
+		for(int i = m_listOfEnemies.size() - 1; i > -1; i--)
+		{ m_listOfEnemies[i]->SetMoveSpeed(300); }		
+	}
 }
 
 void EnemySquad::MissileAction()

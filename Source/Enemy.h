@@ -27,6 +27,7 @@ public:
 	
 	void SetPosition(int xpos, int ypos);
 	void SetMoveDir(int moveDir);
+	void SetMoveSpeed(int newMoveSpeed);
 	int GetMoveDir();
 	float GetX();
 	float GetY();

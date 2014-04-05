@@ -14,7 +14,7 @@ void MainMenu::Initialize()
 	m_exitGame = false;
 	m_menuOption = 0;
 	
-	m_header = Gui::Label("Spoink Invaders", 320, 20, Gui::Color::White);
+	m_header = Gui::Label("Faust Invaders", 320, 20, Gui::Color::White);
 	m_menuSelector = Gui::Sprite(ImageLoader::Image::MenuSelector, 320, 145);
 	m_menuOptionOne = Gui::Label("Play", 380, 150, Gui::Color::White);
 	m_menuOptionTwo = Gui::Label("Exit", 380, 200, Gui::Color::White);

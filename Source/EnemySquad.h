@@ -14,6 +14,7 @@ public:
 
 private:
 	std::vector<std::unique_ptr<Enemy>> m_listOfEnemies;
+	int m_startEnemyCount;
 	float m_nextMissile;
 
 	void SpawnEnemies();
